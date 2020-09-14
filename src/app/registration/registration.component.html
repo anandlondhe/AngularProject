@@ -1,0 +1,77 @@
+<div class="jumbotron">
+
+    <div style="text-align: center;" class="table table-bordered bg-aqua text-danger">
+           <form [formGroup] ="form" (ngSubmit) = "register">
+
+            <div>
+                <label>Student Name : </label>&nbsp;&nbsp;&nbsp;
+                <input type="text" placeholder="Enter Your FullName"
+                formControlName="student_name" />
+                <div class="alert alert-primary" *ngIf="form.get('student_name').invalid && form.get('student_name').touched">   
+                    <div *ngIf="form.get('student_name').errors.required">
+                        Name is Required
+                    </div>
+                    <div *ngIf="form.get('student_name').errors.pattern">
+                        Name Should be in Proper Format
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div>
+                <label>Student Email :</label>&nbsp;&nbsp;&nbsp;
+                <input type="text" placeholder="Enter Your Email ID"
+                formControlName= "student_email" required/>
+            <div class="alert alert-primary" *ngIf="form.get('student_email').invalid && form.get('student_email').touched">   
+                <div *ngIf="form.get('student_email').errors.required">
+                    Email is Required
+                </div>
+                <div *ngIf="form.get('student_email').errors.pattern">
+                    Email Should be in Proper Format
+                </div>
+            </div>
+        </div>
+            <br>
+            <div>
+                <label>Student Age :</label>&nbsp;&nbsp;&nbsp;
+                <input type="text" placeholder="Enter Your Age" 
+                formControlName= "student_age" required/>
+                <div class="alert alert-primary" *ngIf="form.get('student_age').invalid && form.get('student_age').touched">   
+                    <div *ngIf="form.get('student_age').errors.required">
+                        Age is Required
+                    </div>
+                    <div *ngIf="form.get('student_age').errors.pattern">
+                        Age Should be in Proper Format
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div>
+                <label>Are You Graduate? :</label>&nbsp;&nbsp;&nbsp;
+                <input type="checkbox"
+                formControlName= "student_isGraduate" />
+            </div>
+            <br>
+            <div>
+                <label>Student Branch :</label>&nbsp;&nbsp;&nbsp;
+                <select formControlName="student_branch">
+                    <option *ngFor = "let b of graduation_stream" [value]="b">
+                        {{b}}
+                    </option>
+                </select>          
+            </div>
+            <div>
+                <label>Upload Image:</label>&nbsp;&nbsp;&nbsp;
+                <input type="file"
+                formControlName= "student_img" />
+            </div>
+            <div>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button type="submit" class="btn btn-success">Register</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button type="reset" class="btn btn-danger">Clear</button>
+            </div>
+           </form> 
+    </div>
+    <hr>
+   
+</div>
